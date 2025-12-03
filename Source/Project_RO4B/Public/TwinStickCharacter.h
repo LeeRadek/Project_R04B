@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
 #include "AbilitySystemComponent.h"
+#include "FWeaponAbilityData.h"
 #include "ModuleLogicObject.h"
 #include "Camera/CameraComponent.h"
 #include "GameFramework/SpringArmComponent.h"
@@ -56,4 +57,7 @@ public:
 	
 	UFUNCTION(BlueprintCallable, Category="Modules")
 	void RemoveWeaponModule(int32 Index);
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Modules")
+	FWeaponAbilityData StartingWeaponData;
 };
