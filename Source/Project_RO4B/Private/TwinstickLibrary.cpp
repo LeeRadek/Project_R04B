@@ -2,6 +2,8 @@
 
 
 #include "TwinstickLibrary.h"
+#include "ModuleLogicObject.h"
+#include "WeaponObject.h"
 
 
 UModuleLogicObject* UTwinstickLibrary::CreateModule(AActor* WorldContextObject, AActor* Owner, TSubclassOf<UModuleLogicObject> Class)
@@ -22,3 +24,24 @@ UModuleLogicObject* UTwinstickLibrary::CreateModule(AActor* WorldContextObject, 
 	Obj->Initialize(Owner);
 	return Obj;
 }
+
+UWeaponObject* UTwinstickLibrary::CreateWeaponObject(AActor* WorldContextObject, AActor* Owner,
+	TSubclassOf<UWeaponObject> Class)
+{
+	if (!WorldContextObject || !*Class) return nullptr;
+	
+	if (!Owner)
+	{
+		Owner = WorldContextObject;
+	}
+	if (!Owner)
+	{
+		return nullptr;
+	}
+	
+	UWeaponObject* Obj = NewObject<UWeaponObject>(Owner, Class);
+	Obj->Initialize(Owner);
+	return Obj;
+}
+
+
