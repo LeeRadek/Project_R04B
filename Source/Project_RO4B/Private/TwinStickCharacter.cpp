@@ -2,8 +2,7 @@
 
 
 #include "TwinStickCharacter.h"
-
-#include "WorldPartition/ContentBundle/ContentBundleLog.h"
+#include "InventoryComponent.h"
 
 
 // Sets default values
@@ -22,9 +21,9 @@ ATwinStickCharacter::ATwinStickCharacter()
 	Camera = CreateDefaultSubobject<UCameraComponent>(TEXT("Camera"));
 	Camera->SetupAttachment(SpringArm, USpringArmComponent::SocketName);
 	
-	//Init Upgrades Arrays
-	CharacterUpgrades.SetNum(3);
-	WeaponUpgrades.SetNum(3);
+	//Inventory Setup
+	Inventory = CreateDefaultSubobject<UInventoryComponent>(TEXT("Inventory Component"));
+	
 
 }
 
@@ -49,91 +48,9 @@ void ATwinStickCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInput
 
 }
 
-void ATwinStickCharacter::SetCharacterModulesAtIndex(int32 Index, UModuleLogicObject* NewModule)
-{
-	if (!CharacterUpgrades.IsValidIndex(Index))
-	{
-		return;
-	}
-	
-	UModuleLogicObject* OldModule = CharacterUpgrades[Index];
-	
-	if (OldModule == NewModule)
-	{
-		return;
-	}
-	
-	if (OldModule)
-	{
-		OldModule->OnRemoved();
-	}
-	
-	CharacterUpgrades[Index] = NewModule;
-	
-	if (NewModule)
-	{
-		NewModule->Initialize(this);
-		NewModule->OnGranted();
-	}
-}
 
-void ATwinStickCharacter::SetWeaponModulesAtIndex(int32 Index, UModuleLogicObject* NewModule)
-{
-	if (!WeaponUpgrades.IsValidIndex(Index))
-	{
-		return;
-	}
-	
-	UModuleLogicObject* OldModule = WeaponUpgrades[Index];
-	
-	if (OldModule == NewModule)
-	{
-		return;
-	}
-	
-	if (OldModule)
-	{
-		OldModule->OnRemoved();
-	}
-	
-	WeaponUpgrades[Index] = NewModule;
-	
-	if (NewModule)
-	{
-		NewModule->Initialize(this);
-		NewModule->OnGranted();
-	}
-}
-//Removes the module at the specified index in the CharacterUpgrades array
-void ATwinStickCharacter::RemoveCharacterModule(int32 Index)
-{
-	if (!CharacterUpgrades.IsValidIndex(Index))
-	{
-		return;
-	}
-	
-	UModuleLogicObject* Module = CharacterUpgrades[Index];
-	
-	if (Module)
-	{
-		Module->OnGranted();
-		CharacterUpgrades[Index] = nullptr;
-	}
-}
-// Remove a weapon module at the specified index
-void ATwinStickCharacter::RemoveWeaponModule(int32 Index)
-{
-	if (!WeaponUpgrades.IsValidIndex(Index))
-	{
-		return;
-	}
-	
-	UModuleLogicObject* Module = WeaponUpgrades[Index];
-	
-	if (Module)
-	{
-		Module->OnRemoved();
-		WeaponUpgrades[Index] = nullptr;
-	}
-}
+
+
+
+
 

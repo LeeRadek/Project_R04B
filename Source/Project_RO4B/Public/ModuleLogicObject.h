@@ -9,7 +9,7 @@
 /**
  * 
  */
-UCLASS(Blueprinttype, Blueprintable, DefaultToInstanced, EditInlineNew)
+UCLASS(Blueprinttype, Blueprintable)
 class PROJECT_RO4B_API UModuleLogicObject : public UObject
 {
 	GENERATED_BODY()

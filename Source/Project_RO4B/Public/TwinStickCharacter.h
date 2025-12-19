@@ -11,6 +11,8 @@
 #include "GameFramework/SpringArmComponent.h"
 #include "TwinStickCharacter.generated.h"
 
+class UInventoryComponent;
+
 UCLASS()
 class PROJECT_RO4B_API ATwinStickCharacter : public ACharacter
 {
@@ -26,12 +28,10 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Conponent")
 	UCameraComponent* Camera;
-	//Upgrades
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Upgrades")
-	TArray<UModuleLogicObject*> CharacterUpgrades;
-
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Upgrades")
-	TArray<UModuleLogicObject*> WeaponUpgrades;
+	
+	//Inventory Component
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Conponent")
+	UInventoryComponent* Inventory;
 
 protected:
 	// Called when the game starts or when spawned
@@ -44,20 +44,4 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 	
-	//Sets a module at the specified index in the CharacterUpgrades array
-	UFUNCTION(BlueprintCallable, Category="Modules")
-	void SetCharacterModulesAtIndex(int32 Index, UModuleLogicObject* NewModule);
-	
-	//Sets a module at the specified index in the WeaponUpgrades array
-	UFUNCTION(BlueprintCallable, Category="Modules")
-	void SetWeaponModulesAtIndex(int32 Index, UModuleLogicObject* NewModule);
-	
-	UFUNCTION(BlueprintCallable, Category="Modules")
-	void RemoveCharacterModule(int32 Index);
-	
-	UFUNCTION(BlueprintCallable, Category="Modules")
-	void RemoveWeaponModule(int32 Index);
-	
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Modules")
-	FWeaponAbilityData StartingWeaponData;
 };

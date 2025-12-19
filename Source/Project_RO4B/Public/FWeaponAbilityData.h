@@ -1,8 +1,9 @@
 #pragma once
 
-#include "ModuleLogicObject.h"
 #include"ERarity.h"
 #include "FWeaponAbilityData.generated.h"
+
+class UWeaponObject;
 
 USTRUCT(BlueprintType)
 struct FWeaponAbilityData
@@ -15,16 +16,16 @@ public:
 	FName WeaponName;
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Weapon Ability Data")
-	TSubclassOf<class UGameplayAbility> WeaponAbilityClass;
-	
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Weapon Ability Data")
-	TArray<UModuleLogicObject*> WeaponModules;
+	FText WeaponDescription;
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Weapon Ability Data")
 	UTexture2D* WeaponIcon;
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Weapon Ability Data")
 	ERarity WeaponRarity;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Weapon Ability Data")
+	TSubclassOf<UWeaponObject> WeaponClass;
 	
 	FWeaponAbilityData()
 	{

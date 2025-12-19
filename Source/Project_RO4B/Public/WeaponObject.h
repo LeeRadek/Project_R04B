@@ -4,14 +4,14 @@
 
 #include "CoreMinimal.h"
 #include "UObject/Object.h"
-#include "FWeaponAbilityData.h"
 #include "WeaponObject.generated.h"
 
-
+class UWeaponDataAsset;
+class UModuleLogicObject;
 /**
  * 
  */
-UCLASS()
+UCLASS(BlueprintType, Blueprintable)
 class PROJECT_RO4B_API UWeaponObject : public UObject
 {
 	GENERATED_BODY()
@@ -19,12 +19,16 @@ class PROJECT_RO4B_API UWeaponObject : public UObject
 public:
 	
 	UWeaponObject();
-
-	UPROPERTY(BlueprintReadWrite, EditAnywhere)
-	FWeaponAbilityData WeaponData;
+	
+	
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Weapon")
+	TArray<UModuleLogicObject*> Modules;
 	
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Weapon")
 	AActor* OwnerActor;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Weapon")
+	UWeaponDataAsset* WeaponDataAsset;
 	
 public:
 	
@@ -39,5 +43,18 @@ public:
 		return OwnerActor ? OwnerActor->GetWorld() : nullptr;
 	}
 	
+	//Sets the owner actor of this weapon
+	virtual void SetOwner(AActor* Actor)
 	
+	UFUNCTION(BlueprintCallable, Category="Weapon")
+	void Fire();
+	
+	UFUNCTION(BlueprintImplementableEvent , Category="Weapon", DisplayName="Fire")
+	void Fire_Internal();
+	
+	UFUNCTION(BlueprintCallable, Category="Weapon")
+	virtual void StopFire() ;
+	
+	UFUNCTION(BlueprintImplementableEvent, DisplayName="Stop Fire", Category="Weapon")
+	void StopFire_Internal();
 };
