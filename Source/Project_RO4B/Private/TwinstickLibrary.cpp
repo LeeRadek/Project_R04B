@@ -8,7 +8,7 @@
 
 UModuleLogicObject* UTwinstickLibrary::CreateModule(AActor* WorldContextObject, AActor* Owner, TSubclassOf<UModuleLogicObject> Class)
 {
-	if (!WorldContextObject || !*Class) return nullptr;
+	if (!WorldContextObject || !Class) return nullptr;
 	
 	if (!Owner)
 	{
@@ -25,14 +25,14 @@ UModuleLogicObject* UTwinstickLibrary::CreateModule(AActor* WorldContextObject, 
 	return Obj;
 }
 
-UWeaponObject* UTwinstickLibrary::CreateWeaponObject(AActor* WorldContextObject, AActor* Owner,
+UWeaponObject* UTwinstickLibrary::CreateWeaponObject(UObject* WorldContextObject, AActor* Owner,
 	TSubclassOf<UWeaponObject> Class)
 {
-	if (!WorldContextObject || !*Class) return nullptr;
+	if (!WorldContextObject || !Class) return nullptr;
 	
 	if (!Owner)
 	{
-		Owner = WorldContextObject;
+		Owner = Cast<AActor>(WorldContextObject);
 	}
 	if (!Owner)
 	{

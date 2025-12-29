@@ -4,6 +4,8 @@
 
 #include "CoreMinimal.h"
 #include "UObject/Object.h"
+#include "FWeaponRuntimeData.h"
+#include "FWeaponStaticData.h"
 #include "WeaponObject.generated.h"
 
 class UWeaponDataAsset;
@@ -21,14 +23,21 @@ public:
 	UWeaponObject();
 	
 	
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Weapon")
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Weapon")
 	TArray<UModuleLogicObject*> Modules;
 	
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Weapon")
+	UPROPERTY()
 	AActor* OwnerActor;
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Weapon")
-	UWeaponDataAsset* WeaponDataAsset;
+	FWeaponStaticData WeaponStaticData;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Weapon")
+	FWeaponRuntimeData WeaponRuntimeData;
+	
+	//Unique ID for this weapon instance
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Weapon")
+	FGuid ID;
 	
 public:
 	
@@ -44,7 +53,13 @@ public:
 	}
 	
 	//Sets the owner actor of this weapon
-	virtual void SetOwner(AActor* Actor)
+	virtual void SetOwner(AActor* Actor);
+	
+	UFUNCTION(BlueprintCallable, Category="Weapon")
+	void InitializeWeapon(
+		const FWeaponStaticData& InStaticData,
+		const FWeaponRuntimeData& InRuntimeData);
+
 	
 	UFUNCTION(BlueprintCallable, Category="Weapon")
 	void Fire();

@@ -32,3 +32,8 @@ void UInventoryComponent::TickComponent(float DeltaTime, ELevelTick TickType, FA
 	// ...
 }
 
+void UInventoryComponent::AddWeaponToInventory()
+{
+	
+}
+

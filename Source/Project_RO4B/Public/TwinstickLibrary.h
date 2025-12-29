@@ -23,6 +23,6 @@ public:
 	
 	///Creates a Weapon Object of the specified class and initializes it with the owner actor. If Owner is null, it will use the WorldContextObject's owner.
 	UFUNCTION(BlueprintCallable, meta =(WorldContext="WorldContextObject", DisplayName="Create Weapon"), Category="Weapon")
-	static UWeaponObject* CreateWeaponObject(AActor* WorldContextObject, AActor* Owner, TSubclassOf<UWeaponObject> Class);
+	static UWeaponObject* CreateWeaponObject(UObject* WorldContextObject, AActor* Owner, TSubclassOf<UWeaponObject> Class);
 
 };

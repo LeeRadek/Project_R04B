@@ -3,8 +3,10 @@
 
 #include "ModuleLogicObject.h"
 
-
-
+UModuleLogicObject::UModuleLogicObject()
+{
+	ID = FGuid::NewGuid();
+}
 
 
 

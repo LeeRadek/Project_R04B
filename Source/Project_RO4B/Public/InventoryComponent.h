@@ -8,7 +8,7 @@
 #include "InventoryComponent.generated.h"
 
 
-UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
+UCLASS( BlueprintType, Blueprintable, ClassGroup=(Inventory), meta=(BlueprintSpawnableComponent) )
 class PROJECT_RO4B_API UInventoryComponent : public UActorComponent
 {
 	GENERATED_BODY()
@@ -34,6 +34,10 @@ protected:
 public:	
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
+	
+	//Adds a weapon to the inventory
+	UFUNCTION( BlueprintCallable, Category="Inventory")
+	void AddWeaponToInventory();
 
 		
 };

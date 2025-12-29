@@ -5,7 +5,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
 #include "AbilitySystemComponent.h"
-#include "FWeaponAbilityData.h"
+#include "FWeaponStaticData.h"
 #include "ModuleLogicObject.h"
 #include "Camera/CameraComponent.h"
 #include "GameFramework/SpringArmComponent.h"
@@ -23,15 +23,12 @@ public:
 	ATwinStickCharacter();
 	
 	//Components
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Conponent")
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Conponent", DisplayName="Spring Arm")
 	USpringArmComponent* SpringArm;
 
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Conponent")
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Conponent", DisplayName="Camera")
 	UCameraComponent* Camera;
-	
-	//Inventory Component
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Conponent")
-	UInventoryComponent* Inventory;
+
 
 protected:
 	// Called when the game starts or when spawned

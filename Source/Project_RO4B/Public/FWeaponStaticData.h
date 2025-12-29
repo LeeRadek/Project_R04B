@@ -1,12 +1,12 @@
 #pragma once
 
 #include"ERarity.h"
-#include "FWeaponAbilityData.generated.h"
+#include "FWeaponStaticData.generated.h"
 
 class UWeaponObject;
 
 USTRUCT(BlueprintType)
-struct FWeaponAbilityData
+struct FWeaponStaticData
 {
 	GENERATED_BODY()
 	
@@ -27,9 +27,13 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Weapon Ability Data")
 	TSubclassOf<UWeaponObject> WeaponClass;
 	
-	FWeaponAbilityData()
+	FWeaponStaticData()
 	{
-		
+		WeaponName = FName("DefaultWeapon");
+		WeaponDescription = FText::FromString("Default Weapon Description");
+		WeaponIcon = nullptr;
+		WeaponRarity = ERarity::Common;
+		WeaponClass = nullptr;
 	}
 
 };

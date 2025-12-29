@@ -3,10 +3,12 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "FWeaponRuntimeData.h"
 #include "UObject/Object.h"
+#include "FWeaponStaticData.h"
 #include "WeaponHolder.generated.h"
 
-class UWeaponObject;
+
 /**
  * 
  */
@@ -18,5 +20,8 @@ class PROJECT_RO4B_API UWeaponHolder : public UObject
 public:
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Weapon Holder")
-	UWeaponObject* Weapon;
+	FWeaponStaticData WeaponStaticData;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Weapon Holder")
+	FWeaponRuntimeData WeaponRuntimeData;
 };

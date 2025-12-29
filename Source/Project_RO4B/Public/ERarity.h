@@ -3,9 +3,9 @@
 UENUM(BlueprintType)
 enum class ERarity : uint8
 {
-	Common UMETA(DisplayName = "Common"),
-	Rare UMETA(DisplayName = "Rare"),
-	Epic UMETA(DisplayName = "Epic"),
-	Legendary UMETA(DisplayName = "Legendary"),
-	Unique UMETA(DisplayName = "Unique")
+	Common = 0 UMETA(DisplayName = "Common"),
+	Rare = 1 UMETA(DisplayName = "Rare"),
+	Epic = 2 UMETA(DisplayName = "Epic") ,
+	Legendary = 3 UMETA(DisplayName = "Legendary"),
+	Unique = 4 UMETA(DisplayName = "Unique")
 };

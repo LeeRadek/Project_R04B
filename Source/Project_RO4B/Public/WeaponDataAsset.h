@@ -3,8 +3,9 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "FWeaponRuntimeData.h"
 #include "Engine/DataAsset.h"
-#include "FWeaponAbilityData.h"
+#include "FWeaponStaticData.h"
 #include "WeaponDataAsset.generated.h"
 
 
@@ -19,6 +20,9 @@ class PROJECT_RO4B_API UWeaponDataAsset : public UPrimaryDataAsset
 	public:
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Weapon Data Asset")
-	FWeaponAbilityData WeaponData;
+	FWeaponStaticData WeaponStaticData;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Weapon Data Asset")
+	FWeaponRuntimeData StartingWeaponRuntimeData;
 	
 };

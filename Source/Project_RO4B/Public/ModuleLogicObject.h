@@ -16,6 +16,8 @@ class PROJECT_RO4B_API UModuleLogicObject : public UObject
 	
 public:
 	
+	UModuleLogicObject();
+	
 	//The actor that owns this module
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Module")
 	AActor* OwnerActor;
@@ -27,21 +29,25 @@ public:
 		OwnerActor = Owner;
 	}
 	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Module")
+	FName ModuleName;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Module")
+	FText ModuleDescription;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Module")
+	UTexture2D* ModuleIcon;
+	
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Module")
+	FGuid ID;
+
+public:
+	
 	//Override GetWorld to return the OwnerActor's world
 	virtual UWorld* GetWorld() const override
 	{
 		return OwnerActor ? OwnerActor->GetWorld() : nullptr;
 	}
-	/*
-	//Helper to get the outer as an AActor
-	AActor* GetOuterAActor()
-	{
-		return Cast<AActor>(GetOuter());
-	}
-	
-	virtual void PostInitProperties() override;
-	*/
-
 	
 	//Module Events
 	//Called when the Gameplay Ability is executed

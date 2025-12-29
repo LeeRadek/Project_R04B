@@ -20,10 +20,6 @@ ATwinStickCharacter::ATwinStickCharacter()
 
 	Camera = CreateDefaultSubobject<UCameraComponent>(TEXT("Camera"));
 	Camera->SetupAttachment(SpringArm, USpringArmComponent::SocketName);
-	
-	//Inventory Setup
-	Inventory = CreateDefaultSubobject<UInventoryComponent>(TEXT("Inventory Component"));
-	
 
 }
 
