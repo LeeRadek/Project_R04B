@@ -41,6 +41,7 @@ UWeaponObject* UTwinstickLibrary::CreateWeaponObject(UObject* WorldContextObject
 	
 	UWeaponObject* Obj = NewObject<UWeaponObject>(Owner, Class);
 	Obj->Initialize(Owner);
+	Obj->SetOwner(Owner);
 	return Obj;
 }
 

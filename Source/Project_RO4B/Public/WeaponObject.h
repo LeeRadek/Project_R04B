@@ -26,7 +26,7 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Weapon")
 	TArray<UModuleLogicObject*> Modules;
 	
-	UPROPERTY()
+	UPROPERTY(BlueprintReadOnly, Category = "Weapon")
 	AActor* OwnerActor;
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Weapon")
